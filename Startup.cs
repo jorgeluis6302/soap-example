@@ -5,6 +5,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Models;
 using SoapCore;
+// services
+using Services;
+
 
 namespace SoapTest
 {
@@ -13,7 +16,8 @@ namespace SoapTest
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSoapCore();
-            services.TryAddSingleton<ISampleService, SampleService>();
+            services.TryAddSingleton<Services.PersonService.IPersonService, Services.PersonService.PersonService>();
+            services.TryAddSingleton<Services.Arithmetic.IArithmeticService, Services.Arithmetic.ArithmeticService>();
             services.AddMvc();
         }
         public void Configure(
@@ -25,17 +29,16 @@ namespace SoapTest
             {
                 app.UseDeveloperExceptionPage();
             }
-            /*
-            app.UseSoapEndpoint<ISampleService>(
-                "/Service.asmx", 
-                new BasicHttpBinding(), 
-                SoapSerializer.XmlSerializer
-            );
-            */
             app.UseRouting();
             app.UseEndpoints(endpoints => {
-                endpoints.UseSoapEndpoint<ISampleService>(
-                    "/Service.asmx",
+                endpoints.UseSoapEndpoint<Services.PersonService.IPersonService>(
+                    "/PersonService.asmx",
+                    new SoapEncoderOptions(),
+                    SoapSerializer.DataContractSerializer
+                );
+
+                endpoints.UseSoapEndpoint<Services.Arithmetic.IArithmeticService>(
+                    "/ArithmeticService.asmx",
                     new SoapEncoderOptions(),
                     SoapSerializer.DataContractSerializer
                 );
