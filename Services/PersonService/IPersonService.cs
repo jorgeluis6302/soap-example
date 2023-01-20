@@ -8,9 +8,6 @@ namespace Services.PersonService {
         void XmlMethod(System.Xml.Linq.XElement xml);
 
         [OperationContract]
-        PersonModel TestPersonModel(PersonModel inputPerson);
-
-        [OperationContract]
         string GreetingsMessage (int Id, string FirstName, string LastName);
     }
 

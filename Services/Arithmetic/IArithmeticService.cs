@@ -6,10 +6,6 @@ namespace Services.Arithmetic {
     public interface IArithmeticService {
         [OperationContract]
         void XmlMethod(System.Xml.Linq.XElement xml);
-
-        [OperationContract]
-        ArithmeticModel TestArtithmeticModel(ArithmeticModel inputPerson);
-
         [OperationContract]
         double Sum (double a, double b);
         [OperationContract]

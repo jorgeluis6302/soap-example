@@ -25,10 +25,6 @@ namespace Services.Arithmetic {
         public double Product (double a, double b) {
             var operation = new ArithmeticModel();
             return operation.Product(a, b);
-        }
-
-        public ArithmeticModel TestArtithmeticModel (ArithmeticModel arithmeticModel) {
-            return arithmeticModel;
-        }        
+        }     
     }
 }
