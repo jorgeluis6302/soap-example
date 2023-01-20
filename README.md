@@ -1,8 +1,13 @@
-# SOAP Example
+# SOAP Example (soap provider)
 
-SoapTest Project for educational purpouses made in .net core 6 and SoapCore
+SoapTest Project for educational purpouses made in .net core 6 and SoapCore.
 
-## Services
+## Available Services
 Available services:
 - `/PersonService.asmx`
 - `ArithmeticService.asmx`
+
+## Run project
+```
+dotnet run
+```
